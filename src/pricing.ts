@@ -1,4 +1,5 @@
 import type { LineItem, InvoiceSummary } from './types.ts';
+import { roundCents } from './money.ts';
 
 export function calculateSubtotal(items: LineItem[]): number {
   return items
@@ -16,7 +17,7 @@ export function calculateInvoiceTotal(
   const netCents = subtotalCents - effectiveDiscount;
   const taxCents = validItems.reduce((sum, item) => {
     const rate = item.taxRate ?? 0;
-    return sum + Math.round(item.unitPriceCents * item.quantity * rate);
+    return sum + roundCents(item.unitPriceCents * item.quantity * rate);
   }, 0);
   const totalCents = Math.max(0, netCents + taxCents);
 
