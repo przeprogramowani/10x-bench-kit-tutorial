@@ -10,6 +10,11 @@ export interface DiscountRule {
   minSubtotalCents?: number;
 }
 
+export interface TieredDiscountOptions {
+  tiers: DiscountRule[];
+  maxDiscountPercent?: number;
+}
+
 export interface InvoiceSummary {
   subtotalCents: number;
   discountCents: number;
