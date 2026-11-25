@@ -1,0 +1,10 @@
+{
+  "name": "10x-bench-kit-tutorial",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Sample billing ledger project for the 10x-bench-kit tutorial course",
+  "scripts": {
+    "test": "node --experimental-strip-types --test test/*.test.ts",
+    "lint": "node scripts/lint.mjs"
+  }
+}
