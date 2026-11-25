@@ -11,4 +11,11 @@ describe('createLedgerEntry', () => {
     assert.equal(entry.totalCents, 15000);
     assert.equal(entry.currency, 'USD');
   });
+
+  it('rounds fractional tax amounts consistently half-up', () => {
+    const entry = createLedgerEntry('INV-002', [
+      { sku: 'MICRO', unitPriceCents: 10, quantity: 1, taxRate: 0.05 },
+    ], 'PLN');
+    assert.equal(entry.totalCents, 11);
+  });
 });
